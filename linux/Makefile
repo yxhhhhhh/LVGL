@@ -3,6 +3,10 @@ GCC   ?= $(CROSS_COMPILE)gcc
 GXX   ?= $(CROSS_COMPILE)g++
 STRIP ?= $(CROSS_COMPILE)strip
 
+LVGL_DIR   = $(shell pwd)/../
+
+C_INCLUDES := -I$(LVGL_DIR)
+
 PROGS = liblinux.a
 
 OMX_COMP_C_SRCS=$(wildcard ./*.c)

@@ -1,9 +1,9 @@
-#include <windows.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <lvgl.h>
 #include "widgets.h"
 #ifdef WINDOW
+#include <windows.h>
 #include "lv_port_disp_win32.h"
 #include "lv_port_indev_win32.h"
 #elif LINUX
@@ -50,7 +50,7 @@ int main(void)
 #ifdef WINDOW
     lv_win32_indev_exit();
     lv_win32_disp_exit();
-#elif
+#elif LINUX
     while(1)
     {
         lv_timer_handler();

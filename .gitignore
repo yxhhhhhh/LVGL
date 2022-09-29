@@ -25,3 +25,4 @@ tests/report/
 .DS_Store
 .vscode
 *.bak
+src/lv_conf.h

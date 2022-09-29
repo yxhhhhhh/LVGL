@@ -2,6 +2,7 @@
 
 set -e
 
+cp $PWD/win32/lv_conf.h $PWD/src/lv_conf.h
 rm -rf $PWD/build
 mkdir  $PWD/build
 cd $PWD/build
