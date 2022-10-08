@@ -7,7 +7,7 @@ LVGL_DIR   = $(shell pwd)/../
 
 C_INCLUDES := -I$(LVGL_DIR)
 
-PROGS = liblinux.a
+PROGS = liblvgl_linux.a
 
 OMX_COMP_C_SRCS=$(wildcard ./*.c)
 OMX_COMP_C_SRCS_NO_DIR=$(notdir $(OMX_COMP_C_SRCS))

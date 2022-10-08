@@ -24,7 +24,6 @@ void bitmap_lock   (BMP *pb, int x1, int y1, int x2, int y2);
 void bitmap_unlock (BMP *pb);
 int  bitmap_show   (BMP *pb);
 
-unsigned get_tick_count(void);
 
 extern BMP SCREEN;
 extern BMP WINDOW;

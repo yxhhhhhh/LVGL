@@ -1,7 +1,7 @@
 GCC   ?= gcc
 GXX   ?= g++
 
-PROGS = libwin.a
+PROGS = liblvgl_win32.a
 
 OMX_COMP_C_SRCS=$(wildcard ./*.c)
 OMX_COMP_C_SRCS_NO_DIR=$(notdir $(OMX_COMP_C_SRCS))

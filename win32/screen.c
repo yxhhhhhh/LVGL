@@ -378,9 +378,19 @@ static void _gdi_bmp_lock(void *pb, int x1, int y1, int x2, int y2)
 static void _gdi_bmp_unlock(void *pb)
 {
     if (g_ffrge_hwnd) {
+        if (0) {
         RECT  rect = { ((BMP*)pb)->reserved[0], ((BMP*)pb)->reserved[1], ((BMP*)pb)->reserved[2] + 1, ((BMP*)pb)->reserved[3] + 1 };
         RECT *lpRt = (rect.left || rect.top || rect.right || rect.bottom) ? &rect : NULL;
         InvalidateRect(g_ffrge_hwnd, lpRt, FALSE);
+        } else {
+            HDC hdc = GetDC(g_ffrge_hwnd);
+            int x1  = ((BMP*)pb)->reserved[0];
+            int y1  = ((BMP*)pb)->reserved[1];
+            int x2  = ((BMP*)pb)->reserved[2];
+            int y2  = ((BMP*)pb)->reserved[3];
+            BitBlt(hdc, x1, y1, x2 - x1 + 1, y2 - y1 + 1, s_gdi_hdc, x1, y1, SRCCOPY);
+            ReleaseDC(g_ffrge_hwnd ,hdc);
+        }
     }
 }
 
@@ -443,7 +453,6 @@ int bitmap_show(BMP *pb)
     return g_ffrge_hwnd ? 0 : -1;
 }
 
-unsigned get_tick_count(void) { return GetTickCount(); }
 
 #ifdef _TEST_SCREEN_
 int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hPreInst, LPSTR lpszCmdLine, int nCmdShow)

@@ -1,15 +1,17 @@
+#include <windows.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include "lv_port_disp_win32.h"
 #include "screen.h"
 
-#define DISP_DRAW_BUF_SIZE (MY_DISP_HOR_RES * 10)
+#define DISP_DRAW_BUF_SIZE (MY_DISP_HOR_RES * MY_DISP_VER_RES / 8)
 static lv_color_t         s_buf_1[DISP_DRAW_BUF_SIZE];
 static lv_color_t         s_buf_2[DISP_DRAW_BUF_SIZE];
 static lv_disp_draw_buf_t s_draw_buf_dsc = {};
 static lv_disp_drv_t      s_disp_drv     = {};
 static BMP               *s_disp_bmp     = &WINDOW;
+static uint32_t get_tick_count(void) { return GetTickCount(); }
 
 static void disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_t *color_p)
 {
